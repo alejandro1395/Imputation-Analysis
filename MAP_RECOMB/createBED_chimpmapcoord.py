@@ -17,4 +17,4 @@ with open(chimp_file, "r") as f, open(out_BED_file, "w") as out_fh:
         line = line.rstrip()
         fields = line.split("\t")
         if fields[0] != "position":
-            print("{}:{}-{}".format(chrom, int(fields[0])-1, int(fields[0])), file=out_fh )
+            print("chr{}\t{}\t{}".format(chrom, int(fields[0])-1, int(fields[0])), file=out_fh )
