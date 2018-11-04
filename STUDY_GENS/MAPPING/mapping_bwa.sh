@@ -44,7 +44,7 @@ ${OUTDIR}Pan_troglodytes_${chimp_name}/${name_fastq}.sorted.bam" > ${OUTDIR}Pan_
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/${name_fastq}.sh)
 chmod 755 $jobname
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name_fastq}.out \
--e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name_fastq}.err -n ${name_fastq} -u 8 -t 1 -w 23:30:00
+-e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name_fastq}.err -n ${name_fastq} -u 8 -t 1 -w 1-23:00:00 -r lowprio
 done; done
 
 
@@ -75,5 +75,5 @@ ${OUTDIR}Pan_troglodytes_${name_4chimp}/${name_fastq}.sorted.bam" > ${OUTDIR}Pan
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${name_4chimp}/qu/${name_fastq}.sh)
 chmod 755 $jobname
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${name_4chimp}/out/${name_fastq}.out \
--e ${OUTDIR}Pan_troglodytes_${name_4chimp}/out/${name_fastq}.err -n ${name_fastq} -u 8 -t 1 -w 23:30:00                                   
+-e ${OUTDIR}Pan_troglodytes_${name_4chimp}/out/${name_fastq}.err -n ${name_fastq} -u 8 -t 1 -w 1-23:00:00 -r lowprio                                   
 done; 
