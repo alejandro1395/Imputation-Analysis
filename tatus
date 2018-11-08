@@ -1,0 +1,54 @@
+[33mcommit a8fdf763b34b8ae97197b027d1bbc576b2c1866f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Alejandro Valenzuela Seba <avalenzu@login2.cnag>
+Date:   Thu Nov 8 12:46:32 2018 +0100
+
+    Change in downsampling values of ellioti
+
+[33mcommit 1110e15689916557a66c8edc4889a82eb9bdc805[m
+Author: Alejandro Valenzuela Seba <avalenzu@login2.cnag>
+Date:   Thu Nov 8 12:16:00 2018 +0100
+
+    downsampling for a individual with a lower coverage than the rest and indexing
+
+[33mcommit 7090bd14ab2b26fe6adc160b51f4e12874ac148e[m
+Merge: 50b6460 560775b
+Author: Alejandro Valenzuela Seba <avalenzu@login2.cnag>
+Date:   Thu Nov 8 10:31:39 2018 +0100
+
+    Merge branch 'master' of https://github.com/alejandro1395/Impute_Master_Thesis
+
+[33mcommit 50b6460e5721d0cb92c9a6270a8a1b7008b687b5[m
+Author: Alejandro Valenzuela Seba <avalenzu@login2.cnag>
+Date:   Thu Nov 8 10:30:57 2018 +0100
+
+    histograms and downsampling scripts
+
+[33mcommit 560775b84ad87c1038678db078d5d59ff080c175[m
+Author: alejandro1395 <a.vale_13@icloud.com>
+Date:   Mon Nov 5 16:54:16 2018 +0100
+
+    Create README.md
+
+[33mcommit 1786c0ce5c39f5d534e40f2561e8400281b237d1[m
+Author: Alejandro Valenzuela Seba <avalenzu@login2.cnag>
+Date:   Mon Nov 5 16:14:31 2018 +0100
+
+    NOT bgzip the bam file and remove duplicate from our chimpanzee individual samples
+
+[33mcommit ef226fc245af8bd5ea6e2625c8f1d73892225e5e[m
+Author: Alejandro Valenzuela Seba <avalenzu@login2.cnag>
+Date:   Sun Nov 4 12:35:09 2018 +0100
+
+    Change of time for mapping and merging of sorted files for individual
+
+[33mcommit 4e734afdf6d9af8b05ce7b1f04f83c3f2fa2d53d[m
+Author: Alejandro Valenzuela Seba <avalenzu@login2.cnag>
+Date:   Tue Oct 30 10:35:47 2018 +0100
+
+    CHanges in the map scripts and mapping bam files
+
+[33mcommit 78467b6d88f8135a1dd44d43f38f00e3d7419985[m
+Author: Alejandro Valenzuela Seba <avalenzu@login2.cnag>
+Date:   Mon Oct 29 09:48:48 2018 +0100
+
+    First scripts in order to create map files for chimp chromosomes
