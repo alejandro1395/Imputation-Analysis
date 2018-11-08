@@ -4,7 +4,7 @@ module load gcc/4.9.3
 module load PYTHON/3.6.3
 
 #chimp folders
-chimp_names="central-Nico verus-McVean schweinfurthii-A912_Nakuu" 
+chimp_names="ellioti-Paquita" 
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT
@@ -25,7 +25,7 @@ in_file=$(ls ${INDIR}Pan_troglodytes_${chimp_name}/*_rmdup.bam | tr " " "\n" | r
 input=$(echo $in_file)
 echo $in_file
 echo $input
-seq 0.006 0.01 0.11 | while read line;
+seq 0.015 0.03 0.31 | while read line;
 do number=$(echo $line | sed 's/,/\./')
 echo "#!/bin/bash
 module purge
