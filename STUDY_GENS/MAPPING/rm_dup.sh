@@ -40,7 +40,7 @@ jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/${chimp_name}_rmdup.sh)
 chmod 755 $jobname
 
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${chimp_name}.rmdup.out \
--e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${chimp_name}.rmdup.err -n ${chimp_name} -u 8 -t 1 -w 06:00:00
+-e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${chimp_name}.rmdup.err -n ${chimp_name} -u 8 -t 1 -w 23:30:00
 done
 
 
