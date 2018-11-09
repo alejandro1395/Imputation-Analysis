@@ -10,7 +10,7 @@ chimp_names="ellioti-Paquita"
 #BAM OUTPUT
 DATA="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/"
 INDIR=${DATA}"BAM_RMDUP/"
-OUTDIR=${DATA}"DOWNSAMPLING_1/"
+OUTDIR=${DATA}"DOWNSAMPLING/"
 
 
 #MAIN SCRIPT LOOPED FOR 3 CHIMPS

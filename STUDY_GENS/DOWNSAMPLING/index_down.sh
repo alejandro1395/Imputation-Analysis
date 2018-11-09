@@ -4,7 +4,7 @@ module load gcc/4.9.3
 module load PYTHON/3.6.3
 
 #chimp folders
-chimp_names="central-Nico verus-McVean schweinfurthii-A912_Nakuu" 
+chimp_names="central-Nico verus-McVean schweinfurthii-A912_Nakuu ellioti-Paquita" 
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT
@@ -29,9 +29,9 @@ module load PICARD/2.8.2
 
 #MAIN SCRIPT
 samtools index ${INDIR}Pan_troglodytes_${chimp_name}/$input" > ${INDIR}Pan_troglodytes_${chimp_name}/qu/${input}_index.sh
-jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/${input}_index.sh)
+jobname=$(echo ${INDIR}Pan_troglodytes_${chimp_name}/qu/${input}_index.sh)
 chmod 755 $jobname
 
-/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${input}_index.out -e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${input}_index.err -n ${input}_index.sh -u 4 -t 1 -w 06:00:00
+/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${INDIR}Pan_troglodytes_${chimp_name}/out/${input}_index.out -e ${INDIR}Pan_troglodytes_${chimp_name}/out/${input}_index.err -n ${input}_index.sh -u 4 -t 1 -w 06:00:00
 done; done;
 
