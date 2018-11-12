@@ -4,12 +4,12 @@ module load gcc/4.9.3
 module load PYTHON/3.6.3
 
 #chimp folders
-chimp_names="central-Nico verus-McVean schweinfurthii-A912_Nakuu ellioti-Paquita" 
+chimp_names="verus-McVean schweinfurthii-A912_Nakuu ellioti-Paquita" 
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT
 DATA="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/"
-INDIR=${DATA}"DOWNSAMPLING/"
+INDIR=${DATA}"DOWNSAMPLING/TAGGED_DOWNS/"
 
 
 #MAIN SCRIPT LOOPED FOR 3 CHIMPS
