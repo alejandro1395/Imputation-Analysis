@@ -4,7 +4,7 @@ module load gcc/4.9.3
 module load PYTHON/3.6.3
 
 #chimp folders
-chimp_names="verus-McVean schweinfurthii-A912_Nakuu ellioti-Paquita" 
+chimp_names="central-Nico verus-McVean schweinfurthii-A912_Nakuu ellioti-Paquita" 
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT

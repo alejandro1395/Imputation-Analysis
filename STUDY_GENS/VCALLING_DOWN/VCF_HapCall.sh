@@ -7,7 +7,7 @@ module load PYTHON/3.6.3
 REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
 
 #chimp folders
-chimp_names="central-Nico verus-McVean schweinfurthii-A912_Nakuu ellioti-Paquita" 
+chimp_names="central-Nico" 
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT
@@ -49,6 +49,5 @@ tabix -p vcf ${OUTDIR}Pan_troglodytes_${chimp_name}/${name}.g.vcf.gz" > ${OUTDIR
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/${name}_call.sh)
 chmod 755 $jobname
 
-#/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.out \
-#-e ${INDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.err -n ${name} -u 8 -t 1 -w 23:50:00
+/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.out -e ${INDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.err -n ${name} -u 8 -t 1 -w 1-23:50:00 -r lowprio
 done; done;
