@@ -16,9 +16,9 @@ OUTDIR=${INDIR}"TAGGED_DOWNS/"
 
 mkdir -p ${OUTDIR}
 echo $chimp_names | tr " " "\n" | while read chimp_name;
-do mkdir ${OUTDIR}Pan_troglodytes_${chimp_name}
-mkdir ${OUTDIR}Pan_troglodytes_${chimp_name}/out/
-mkdir ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/
+do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/out/
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/
 ls ${INDIR}Pan_troglodytes_${chimp_name}/*_downs.bam | while read filepath;
 do in_file=$(ls $filepath | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
 input=$(echo $in_file)

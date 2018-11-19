@@ -1,0 +1,56 @@
+#!/bin/bash
+
+module load gcc/4.9.3
+module load PYTHON/3.6.3
+
+#REFERENCE
+REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
+BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/PANEL_REF/"
+
+#OUTPUT
+INDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/VCFs_DOWN/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/GEN_FILES/"
+mkdir -p ${OUTDIR}
+
+#INPUTS for chr and chimps
+chimp_names="central-Nico schweinfurthii-A912_Nakuu verus-McVean"
+chromosomes="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22"
+echo $chimp_names | tr " " "\n" | while read chimp_name;
+do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/out/
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/tmp/
+ls ${INDIR}Pan_troglodytes_${chimp_name}/*_0.006_downs.g.vcf.gz | while read filepath; 
+do in_file=$(ls $filepath | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
+input=$(echo $in_file)
+echo $chromosomes | tr " " "\n" | while read chr;
+do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr} 
+
+
+#MAIN SCRIPT LOOPED FOR CHIMPS CHROMOSOMES
+
+
+echo "#!/bin/bash
+module purge
+module load gcc/4.9.3-gold
+module load GATK/4.0.8.1
+module load TABIX/0.2.6
+module load VCFTOOLS/0.1.7
+module load zlib/1.2.8
+module load intel/16.3.067
+module load lapack/3.2.1
+module load PLINK/1.90b
+
+#MAIN SCRIPT
+
+${BIN}plink --vcf ${INDIR}Pan_troglodytes_${chimp_name}/$input \
+--double-id \
+--chr ${chr} \
+--allow-extra-chr \
+--recode oxford gen-gz \
+--out ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/study_panel_chr${chr}" > ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/study_panel_chr${chr}.sh
+jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/study_panel_chr${chr}.sh)
+chmod 755 $jobname
+
+#/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}out/ref_panel_chr${chr}.out -e ${OUTDIR}out/ref_panel_chr${chr}.err -n ${name} -u 4 -t 1 -w 05:00:00
+done; done; done;

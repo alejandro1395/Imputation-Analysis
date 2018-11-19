@@ -8,8 +8,8 @@ REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
 BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/PANEL_REF/"
 
 #chromosomes
-#chromosomes=$(echo {5..22})
-chromosomes=2
+#chromosomes=$(echo {1..22})
+chromosomes=1
 #We need to have the files from sorted bam with merged name
 
 #OUTPUT
@@ -46,7 +46,7 @@ module load PLINK/1.90b
 
 ${BIN}plink --vcf ${INPUT} --keep ${OUTDIR}samples_file --double-id --recode oxford gen-gz --out ${OUTDIR}chr${chr}/ref_panel_chr${chr}" > ${OUTDIR}qu/ref_panel_chr${chr}.sh
 jobname=$(echo ${OUTDIR}qu/ref_panel_chr${chr}.sh)
-chmod 777 $jobname
+chmod 755 $jobname
 
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}out/ref_panel_chr${chr}.out -e ${OUTDIR}out/ref_panel_chr${chr}.err -n ${name} -u 4 -t 1 -w 05:00:00
 done;
