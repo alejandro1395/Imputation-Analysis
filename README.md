@@ -2,7 +2,7 @@
 
 Here there is a pipeline of bioinformatics software in order to study the effectivenessof Haplotype Imputation from LOW-COVERAGE
 samples in great-apes data. The scripts loop for different individuals belonging to the 4 subspecies of chimpanzee in this
-case:5a
+case:
 
 STEP 1 -> MAPPING to the human genome and sorting the files
 
