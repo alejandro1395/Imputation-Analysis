@@ -12,7 +12,6 @@ DATA="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/"
 INDIR=${DATA}"BAM/"
 OUTDIR=${DATA}"BAM_RMDUP/"
 
-
 #MAIN SCRIPT LOOPED FOR 3 CHIMPS
 
 mkdir -p ${OUTDIR}
@@ -39,9 +38,7 @@ samtools index ${OUTDIR}Pan_troglodytes_${chimp_name}/${chimp_name}_rmdup.bam " 
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/${chimp_name}_rmdup.sh)
 chmod 755 $jobname
 
+#SUBMISSION TO CLUSTER
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${chimp_name}.rmdup.out \
 -e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${chimp_name}.rmdup.err -n ${chimp_name} -u 8 -t 1 -w 23:30:00
 done
-
-
-

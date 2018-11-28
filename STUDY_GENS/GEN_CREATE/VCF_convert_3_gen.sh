@@ -52,5 +52,6 @@ ${BIN}plink --vcf ${INDIR}Pan_troglodytes_${chimp_name}/$input \
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/study_panel_chr${chr}.sh)
 chmod 755 $jobname
 
+#SUBMISSION TO CLUSTER
 #/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}out/ref_panel_chr${chr}.out -e ${OUTDIR}out/ref_panel_chr${chr}.err -n ${name} -u 4 -t 1 -w 05:00:00
 done; done; done;

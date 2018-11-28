@@ -49,5 +49,6 @@ tabix -p vcf ${OUTDIR}Pan_troglodytes_${chimp_name}/${name}.g.vcf.gz" > ${OUTDIR
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/${name}_call.sh)
 chmod 755 $jobname
 
+#SUBMISSION TO CLUSTER
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.out -e ${INDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.err -n ${name} -u 8 -t 1 -w 1-23:50:00 -r lowprio
 done; done;

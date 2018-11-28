@@ -30,6 +30,7 @@ samtools depth -a ${INDIR}Pan_troglodytes_${chimp_name}/$input | python histogra
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/${chimp_name}_cov.sh)
 chmod 755 $jobname
 
+#SUBMISSION TO CLUSTER
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${chimp_name}.cov.out \
 -e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${chimp_name}.cov.err -n ${chimp_name} -u 1 -t 1 -w 23:30:00
 done

@@ -48,5 +48,6 @@ ${BIN}plink --vcf ${INPUT} --keep ${OUTDIR}samples_file --double-id --recode oxf
 jobname=$(echo ${OUTDIR}qu/ref_panel_chr${chr}.sh)
 chmod 755 $jobname
 
+#SUBMISSION TO CLUSTER
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}out/ref_panel_chr${chr}.out -e ${OUTDIR}out/ref_panel_chr${chr}.err -n ${name} -u 4 -t 1 -w 05:00:00
 done;

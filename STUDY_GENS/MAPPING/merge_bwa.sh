@@ -4,7 +4,7 @@ module load gcc/4.9.3
 module load PYTHON/3.6.3
 
 
-#chimp folders
+#chimp folders which need merging
 chimp_names="schweinfurthii-A912_Nakuu ellioti-Paquita" 
 
   
