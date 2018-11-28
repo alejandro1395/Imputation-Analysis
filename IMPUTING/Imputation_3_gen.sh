@@ -27,12 +27,12 @@ chromosomes="22"
 #Iterates for chr and chimps
 echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
-ls ${STUDY_GENS}Pan_troglodytes_${chimp_name}/chr${chromosomes}/*.gen.gz | while read filepath; 
+ls ${STUDY_GENS}Pan_troglodytes_${chimp_name}/chr${chromosomes}/*0.106.gen.gz | while read filepath; 
 do in_file=$(ls $filepath | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
 input=$(echo $in_file)
-mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes} 
-mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/out
-mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/qu
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.106/ 
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.106/out
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.106/qu
 
 #LOOP CHUNKS IN FIRST CHROMOSOME
 
@@ -64,14 +64,14 @@ ${BIN}impute2 \
 -g_ref ${REF_PANELS}/chr${chromosomes}/ref_panel_chr${chromosomes}.gen.gz \
 -int $startchr $endchr \
 -Ne 20000 \
--o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/chr${chromosomes}.chunk${chunk}.unphased.impute2 \
--o_gz" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/qu/impute_chr${chromosomes}_chunk${chunk}.sh
-jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/qu/impute_chr${chromosomes}_chunk${chunk}.sh)
+-o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.106/chr${chromosomes}.chunk${chunk}.unphased.impute2 \
+-o_gz" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.106/qu/impute_chr${chromosomes}_chunk${chunk}.sh
+jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.106/qu/impute_chr${chromosomes}_chunk${chunk}.sh)
 chmod 755 $jobname
 start=$endchr
 
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
--o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/out/impute_chr${chromosomes}.out \
--e ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/out/impute_chr${chromosomes}.err \
+-o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.106/out/impute_chr${chromosomes}.out \
+-e ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.106/out/impute_chr${chromosomes}.err \
 -n ${chromosomes}_chunk${chunk} -u 8 -t 1 -w 23:50:00
 done; done; done;

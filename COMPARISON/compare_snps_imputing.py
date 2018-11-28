@@ -80,6 +80,7 @@ with gzip.open(ref_file, "rt") as f3, \
                 if ident in dict_known.keys():
                     GT_a0 = dict_known[ident].split("/")[0]
                     GT_a1 = dict_known[ident].split("/")[1]
+                    dict_known.pop(ident)
                     if GT_a0 == gt_ref and GT_a1 == gt_alt:
                         corrected_known += 1
                 elif ident in dict_well_imputed.keys():
@@ -87,11 +88,14 @@ with gzip.open(ref_file, "rt") as f3, \
                     GT_a1 = dict_well_imputed[ident].split("/")[1]
                     if GT_a0 == gt_ref and GT_a1 == gt_alt:
                         corrected_imputed += 1
+        for key in dict_known:
+            print(key, file=f4)
 
         print("There are in total "+str(total_impute)+"but only found"+str(found_impute))
         print("#####PERCENTAGES OF IMPUTATION SCORES######", file = f4)
         print()
         print("{}: {}".format("Total number of before-hand known genotypes", total_known), file=f4)
         print("{}: {}".format("Percentage of right before-hand known genotypes", 100*(corrected_known/total_known)), file=f4)
-        print("{}: {}".format("Total number of imputed genotypes", total_imputed), file=f4)
-        print("{}: {}".format("Percentage of right imputed genotypes", 100*(corrected_imputed/total_imputed)), file = f4)
+        print("{}: {}".format("Total number of imputed filtered genotypes", total_imputed), file=f4)
+        print("{}: {}".format("Percentage of right imputed filtered genotypes", 100*(corrected_imputed/total_imputed)), file = f4)
+        print("There are in total "+str(total_impute)+"imputed positions, but only found"+str(found_impute)+ "match with our individual", file=f4)

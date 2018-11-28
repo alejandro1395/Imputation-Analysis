@@ -35,6 +35,6 @@ with gzip.open(vcf_input_file, "rt") as f, \
                 ALT = fields[4]
                 GT_REF = fields[index_ind].split(":")[0].split("/")[0]
                 GT_ALT = fields[index_ind].split(":")[0].split("/")[1]
-                print("{}\t{}\t{}\t{}\t{}\t{}\t{}".format(chr, position,
+                print("{}\t{}\t{}\t{}\t{}\t{}/{}".format(chr, position,
                                                           ID, REF, ALT, GT_REF,
                                                           GT_ALT), file=out_fh)
