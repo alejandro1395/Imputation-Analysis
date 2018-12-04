@@ -7,7 +7,7 @@ module load PYTHON/3.6.3
 REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
 
 #chimp folders
-chimp_names="central-Nico" 
+chimp_names="verus-McVean" 
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT
@@ -23,7 +23,7 @@ do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/out/
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/tmp/
-ls ${INDIR}Pan_troglodytes_${chimp_name}/*_rmdup.bam | while read filepath; 
+ls ${INDIR}Pan_troglodytes_${chimp_name}/*0.23_downs.bam | while read filepath; 
 do in_file=$(ls $filepath | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
 input=$(echo $in_file)
 echo $input
@@ -50,5 +50,6 @@ jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/${name}_call.sh)
 chmod 755 $jobname
 
 #SUBMISSION TO CLUSTER
-/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.out -e ${INDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.err -n ${name} -u 8 -t 1 -w 1-23:50:00 -r lowprio
+/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.out \
+-e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.err -n ${name} -u 4 -t 1 -w 47:00:00 -r lowprio
 done; done;

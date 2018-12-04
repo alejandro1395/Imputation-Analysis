@@ -13,15 +13,17 @@ OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/GEN_FILES/
 mkdir -p ${OUTDIR}
 
 #INPUTS for chr and chimps
-chimp_names="central-Nico schweinfurthii-A912_Nakuu verus-McVean"
-chromosomes="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22"
+chimp_names="verus-McVean"
+chromosomes="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21"
+coverages="0.006 0.036 0.056 0.076 0.106"
 echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/out/
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/tmp/
-ls ${INDIR}Pan_troglodytes_${chimp_name}/*_0.006_downs.g.vcf.gz | while read filepath; 
-do in_file=$(ls $filepath | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
+echo $coverages | tr " " "\n" | while read cov;
+do filepath=$(ls ${INDIR}Pan_troglodytes_${chimp_name}/*_${cov}_downs.g.vcf.gz) 
+in_file=$(ls $filepath | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
 input=$(echo $in_file)
 echo $chromosomes | tr " " "\n" | while read chr;
 do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr} 
@@ -53,5 +55,5 @@ jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/study_panel_chr${chr}.s
 chmod 755 $jobname
 
 #SUBMISSION TO CLUSTER
-#/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}out/ref_panel_chr${chr}.out -e ${OUTDIR}out/ref_panel_chr${chr}.err -n ${name} -u 4 -t 1 -w 05:00:00
+/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}out/ref_panel_chr${chr}.out -e ${OUTDIR}out/ref_panel_chr${chr}.err -n ${cov} -u 4 -t 1 -w 05:00:00
 done; done; done;

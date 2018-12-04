@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-
 """
 Script that joins information between the liftover coordinates remaining and the genetic map
 distances of the chimp recombination maps produced by LdHat
@@ -9,6 +8,7 @@ distances of the chimp recombination maps produced by LdHat
 import sys
 import re
 import fileinput
+
 
 if len(sys.argv) == 5:
     unmapped = sys.argv[1]
@@ -31,21 +31,25 @@ Function that creates a list where all the excluded positions are saved for join
 the coordinates with the map distances later
 """
 
+
 def create_excluded_positions_list(file_unmapped):
     Excluded_list = []
     with open(file_unmapped, "r") as in_fh:
-    for line in in_fh:
-        line = line.rstrip()
-        if not line.startswith("#"):
-            chr_coord = int(line.split()[2])
-            Excluded_list.append(chr_coord)
+        for line in in_fh:
+            line = line.rstrip()
+            if not line.startswith("#"):
+                chr_coord = int(line.split()[2])
+                Excluded_list.append(chr_coord)
     return Excluded_list
+
+
 
 """
 Function that runs if the position in the liftover analysis has been unmapped
 and does not print the next coordinate in the map until the next position has been
 mapped with the lift over
 """
+
 
 def unmapped_reads_skipping(input2_fh, Excluded_list, fields_second_file, position):
     unmapped_read = True
@@ -62,6 +66,8 @@ def unmapped_reads_skipping(input2_fh, Excluded_list, fields_second_file, positi
             break
     return previous_pos
 
+
+
 """
 Function that retrieves the fields for both files at the same time,
 the old genetic map and the genomic coordinates after LiftOver
@@ -75,6 +81,7 @@ def getting_line_fields_2_zip_files(first_line, second_line):
     fields_first = first_line.split()
     fields_second = second_line.split()
     return fields_first, fields_second
+
 
 #MAIN SCRIPT
 

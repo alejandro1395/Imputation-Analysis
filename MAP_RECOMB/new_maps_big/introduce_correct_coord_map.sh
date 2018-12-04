@@ -32,7 +32,7 @@ module load PYTHON/3.6.3
 python ${SRC}introduce_correct_coord_map.py ${INDIR1}unMapped_chr${chr} ${INDIR1}lifted_chr${chr} ${INDIR2}chimp_chr${chr}.map \
 chr${chr} > ${OUTDIR}joined_chr${chr}.map" > ${qu}chr${chr}.sh
 chmod 755 ${qu}chr${chr}.sh
-/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${qu}chr${chr}.sh -n chroms -o ${OUTDIR}out/chr${chr}.out -e ${OUTDIR}out/chr${chr}.err -u 1 -t 1 -w 00:30:00
+#/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${qu}chr${chr}.sh -n chroms -o ${OUTDIR}out/chr${chr}.out -e ${OUTDIR}out/chr${chr}.err -u 1 -t 1 -w 00:30:00
 done
 
 

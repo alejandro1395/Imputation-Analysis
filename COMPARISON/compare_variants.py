@@ -17,7 +17,7 @@ else:
     sys.exit("The usage should be ./compare_snps_imputing.py \
     gen_input_file info_input_name ref_file threeshold out_file")
 
-    
+
 #VARIABLES
 diction = {}
 types = []
@@ -75,13 +75,13 @@ def translate_to_vcf_genotype(all_gt, refe, counter):
     for all in all_gt:
         if refe == all:
             counter += 1
-    if count == 2:
+    if counter == 2:
         gt_imp_refe = "0"
         gt_imp_alte = "0"
-    elif count == 1:
+    elif counter == 1:
         gt_imp_refe = "0"
         gt_imp_alte = "1"
-    elif count == 0:
+    elif counter == 0:
         gt_imp_refe = "1"
         gt_imp_alte = "1"
     return gt_imp_refe, gt_imp_alte
@@ -105,13 +105,13 @@ def sum_counter_genotype_found(total_count, correct_count, gt_imp_refe, gt_refe,
 with open(calculated_genotypes, "r") as f1:
     next(f1)
     for line in f1:
-        diction, last_pos = take_info_from_genotyped_file(line1, diction, last_pos)
+        diction, last_pos = take_info_from_genotyped_file(line, diction, last_pos)
 
-        
+
 with gzip.open(ref_input_file, "rt") as f2, \
      open(out_file, "w") as f3:
         for line in f2:
-            pos, ref, alt_list, gt_ref, gt_alt = take_info_from_reference_file(line2)
+            pos, ref, alt_list, gt_ref, gt_alt = take_info_from_reference_file(line)
             if pos in diction.keys() and len(alt_list) == 1 \
                and alt_list[0] in Nucleotides and ref in Nucleotides \
                and gt_ref != "." and gt_alt != ".":
@@ -123,20 +123,21 @@ with gzip.open(ref_input_file, "rt") as f2, \
                         variant = True
                         gt_imp_ref, gt_imp_alt = translate_to_vcf_genotype(alleles_gt, ref, count)
                         if variant and (element[3] == 2):
-                            total_both_count, corrected_both_count, variant = sum_counter_genotype_found(total_both_count, 
-                                                                                                         corrected_both_count, 
-                                                                                                         gt_imp_ref, gt_ref, gt_imp_alt, 
+                            total_both_count, corrected_both_count, variant = sum_counter_genotype_found(total_both_count,
+                                                                                                         corrected_both_count,
+                                                                                                         gt_imp_ref, gt_ref, gt_imp_alt,
                                                                                                          gt_alt, variant)
                             break
                         elif variant and (element[3] == 3):
-                            total_three, corrected_three, variant = sum_counter_genotype_found(total_three, corrected_three, 
-                                                                                                gt_imp_ref, gt_ref, gt_imp_alt, 
+                            print(pos, diction[pos], file=f3)
+                            total_three, corrected_three, variant = sum_counter_genotype_found(total_three, corrected_three,
+                                                                                                gt_imp_ref, gt_ref, gt_imp_alt,
                                                                                                 gt_alt, variant)
 
                             break
                         elif variant and (element[3] == 1):
-                            total_imputed, corrected_imputed, variant = sum_counter_genotype_found(total_imputed, corrected_imputed, 
-                                                                                                gt_imp_ref, gt_ref, gt_imp_alt, 
+                            total_imputed, corrected_imputed, variant = sum_counter_genotype_found(total_imputed, corrected_imputed,
+                                                                                                gt_imp_ref, gt_ref, gt_imp_alt,
                                                                                                 gt_alt, variant)
                             break
 

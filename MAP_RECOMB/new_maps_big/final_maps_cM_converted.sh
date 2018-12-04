@@ -27,5 +27,5 @@ echo ${chromosomes} | tr " " "\n" | while read chr;
 do echo "#!/bin/bash
 python ${SRC}final_maps_cM_converted.py ${INDIR}joined_chr${chr}.map 11413 ${OUTDIR}final_chr${chr}.map" > ${qu}chr${chr}.sh
 chmod 755 ${qu}chr${chr}.sh
-/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${qu}chr${chr}.sh -n from_4Ner_to_cM -o ${out}cM.out -e ${out}cM.err -u 1 -t 1 -w 01:00:00
+#/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${qu}chr${chr}.sh -n from_4Ner_to_cM -o ${out}cM.out -e ${out}cM.err -u 1 -t 1 -w 01:00:00
 done
