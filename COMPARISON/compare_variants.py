@@ -63,8 +63,7 @@ def take_info_from_reference_file(line2):
     refe = fields[3]
     alte_list = fields[4].split(",")
     gt_refe = fields[5]
-    gt_alte = fields[6]
-    return posi, refe, alte_list, gt_refe, gt_alte
+    return posi, refe, alte_list, gt_refe
 
 """
 Functions that translate impute2 genotypes to vcf 0/1 format for biallelic SNPs found
@@ -111,18 +110,22 @@ with open(calculated_genotypes, "r") as f1:
 with gzip.open(ref_input_file, "rt") as f2, \
      open(out_file, "w") as f3:
         for line in f2:
-            pos, ref, alt_list, gt_ref, gt_alt = take_info_from_reference_file(line)
+            pos, ref, alt_list, gt = take_info_from_reference_file(line)
+            gt_ref = gt.split("/")[0]
+            gt_alt = gt.split("/")[1]
             if pos in diction.keys() and len(alt_list) == 1 \
                and alt_list[0] in Nucleotides and ref in Nucleotides \
-               and gt_ref != "." and gt_alt != ".":
+               and gt != "./.":
                 for element in diction[pos]:
                     alleles_gt = element[2].split("/")
                     count = 0
                     if ref in (element[0], element[1]) and (element[0] in alt_list \
-                                                            or element[1] in alt_list):
+                                                            or element[1] in alt_list \
+                                                            or "." in (element[0], element[1])):
                         variant = True
                         gt_imp_ref, gt_imp_alt = translate_to_vcf_genotype(alleles_gt, ref, count)
                         if variant and (element[3] == 2):
+                            #print(pos, diction[pos], file=f3)
                             total_both_count, corrected_both_count, variant = sum_counter_genotype_found(total_both_count,
                                                                                                          corrected_both_count,
                                                                                                          gt_imp_ref, gt_ref, gt_imp_alt,
@@ -148,5 +151,7 @@ with gzip.open(ref_input_file, "rt") as f2, \
         print("{}: {}".format("Total number of type 3 positions in ref VCF right", corrected_three), file=f3)
         print("{}: {}".format("Total number of BOTH panel-down in ref VCF", total_both_count), file=f3)
         print("{}: {}".format("Percentage of right BOTH panel-down in ref VCF genotypes", round(100*(corrected_both_count/total_both_count), 2)), file=f3)
+        print("{}: {}".format("Total number of BOTH panel-down in ref VCF", total_both_count + total_three), file=f3)
+        print("{}: {}".format("Percentage of right BOTH panel-down in ref VCF genotypes", round(100*((corrected_three+corrected_both_count)/(total_both_count + total_three)), 2)), file=f3)
         print("{}: {}".format("Total number of imputed filtered genotypes", total_imputed), file=f3)
         print("{}: {}".format("Percentage of right imputed filtered genotypes", round(100*(corrected_imputed/total_imputed), 2)), file = f3)

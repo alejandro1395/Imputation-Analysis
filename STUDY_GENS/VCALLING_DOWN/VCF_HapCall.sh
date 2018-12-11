@@ -23,7 +23,7 @@ do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/out/
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/tmp/
-ls ${INDIR}Pan_troglodytes_${chimp_name}/*0.23_downs.bam | while read filepath; 
+ls ${INDIR}Pan_troglodytes_${chimp_name}/*0.35_downs.bam | while read filepath; 
 do in_file=$(ls $filepath | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
 input=$(echo $in_file)
 echo $input
@@ -51,5 +51,5 @@ chmod 755 $jobname
 
 #SUBMISSION TO CLUSTER
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.out \
--e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.err -n ${name} -u 4 -t 1 -w 47:00:00 -r lowprio
+-e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${name}_call.err -n ${name} -u 8 -t 1 -w 52:00:00 -r lowprio
 done; done;

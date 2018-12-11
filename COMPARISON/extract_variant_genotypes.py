@@ -93,7 +93,8 @@ with gzip.open(vcf_input_file, "rt") as f, \
             Pantro = take_genotypes_from_all_chimps(fields, Pantro)
             if all(value in fixed1 for key, value in Pantro.items()) or \
                all(value in fixed2 for key, value in Pantro.items()):
+                print(len(Pantro), Pantro)
                 continue
             else:
+                #print(len(Pantro), Pantro)
                 print_selected_chimp_info(fields, analized_vcf_index, out_fh)
-                print(line)
