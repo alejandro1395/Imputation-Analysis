@@ -31,3 +31,11 @@ DIFFERENT ANALYSIS CARRIED OUT AFTER PROCEEDING WITH THE IMPUTATION IN CHROMOSOM
     - Now decreases the Impoutation positions but is still being really bad the percentage of right genotyped imputed positions
     It saturates quickly 
     - Look if there is some BIAS in the wrong imputed positions from the total impouted positions
+
+COMPARANDO LOS RESULTADOS DEL STEP 2 CON EL 3 PARA LOS IMPUTED SNPS-> Creo que a partir de menos de mas de 1x a mas que crezca o decrezca
+el total de Imputed SNPs depende de que gana en la bascula entre los SNPs que aumentas porque pasan el filtro de calidad mas SNPs al tener
+mas coverage y poder basarte en mas INFO vs lo que decrecen por tener menos posiciones que imputar (1 VS 1)
+--> COMO EN el 2ndo caso no tienes en cuenta los SNPS 0/0 que vas incorporando a tus datos con el coverage, no se muestra tanto el efecto
+de decrecer por tener mas posiciones cubiertas y por lo tanto se VE mas el efecto de que mas SNPs pasan el filtro de calidad (tendencia
+de aumento en las total IMPUTED)
+
