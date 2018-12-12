@@ -48,7 +48,7 @@ def take_info_from_gen_file(line1):
 
 def print_fields_of_new_gen_file(ini, end, fields_file, out_file):
     for i in range(ini, end):
-        print("{} ".format(fields_file[i]), file=out_file)
+        print("{} ".format(fields_file[i]), file=out_file, end="")
 
 
 #MAIN
@@ -56,10 +56,11 @@ def print_fields_of_new_gen_file(ini, end, fields_file, out_file):
 
 with gzip.open(panel_info, "rt") as f1:
     for line in f1:
-        pos, ref, alt_list = take_info_from_panel(line)
-        if len(alt_list) == 1 \
-           and alt_list[0] in Nucleotides and ref in Nucleotides:
-            Pantro[pos] = alt_list[0]
+        if not line.startswith("#"):
+            pos, ref, alt_list = take_info_from_panel(line)
+            if len(alt_list) == 1 \
+               and alt_list[0] in Nucleotides and ref in Nucleotides:
+                Pantro[pos] = alt_list[0]
 
 
 with gzip.open(gen_input_file, "rt") as f2, \
@@ -71,5 +72,8 @@ with gzip.open(gen_input_file, "rt") as f2, \
         if pos in Pantro and position_alt == "0":
             new_pos_alt = Pantro[pos]
             print_fields_of_new_gen_file(0, 3, fields_gen, out_fh)
-            print("{} ".format(new_pos_alt), file=out_fh)
-            print_fields_of_new_gen_file(4, 8, fields_gen, out_fh)
+            print("{} ".format(new_pos_alt), file=out_fh, end="")
+            print_fields_of_new_gen_file(4, 7, fields_gen, out_fh)
+            print("{}".format(fields_gen[7]), file=out_fh)
+        else:
+            print(line, file=out_fh)

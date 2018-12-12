@@ -132,10 +132,12 @@ with gzip.open(ref_input_file, "rt") as f2, \
                                                                                                          gt_alt, variant)
                             break
                         elif variant and (element[3] == 3):
-                            print(pos, diction[pos], file=f3)
+                            #print(pos, diction[pos], file=f3)
                             total_three, corrected_three, variant = sum_counter_genotype_found(total_three, corrected_three,
                                                                                                 gt_imp_ref, gt_ref, gt_imp_alt,
                                                                                                 gt_alt, variant)
+                            if gt_imp_ref != gt_ref or gt_imp_alt != gt_alt:
+                                print(pos, diction[pos])
 
                             break
                         elif variant and (element[3] == 1):
