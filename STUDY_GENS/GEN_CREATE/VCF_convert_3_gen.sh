@@ -15,7 +15,7 @@ mkdir -p ${OUTDIR}
 #INPUTS for chr and chimps
 chimp_names="verus-McVean"
 chromosomes="22"
-coverages="0.23"
+coverages="0.35"
 echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/

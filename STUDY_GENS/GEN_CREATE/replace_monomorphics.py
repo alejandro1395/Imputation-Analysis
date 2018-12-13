@@ -76,4 +76,4 @@ with gzip.open(gen_input_file, "rt") as f2, \
             print_fields_of_new_gen_file(4, 7, fields_gen, out_fh)
             print("{}".format(fields_gen[7]), file=out_fh)
         else:
-            print(line, file=out_fh)
+            print(line.rstrip(), file=out_fh)

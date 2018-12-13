@@ -9,8 +9,8 @@ chimp_names="ellioti-Paquita verus-McVean schweinfurthii-A912_Nakuu"
   
 #BAM OUTPUT
 DATA="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/"
-INDIR=${DATA}"DOWNSAMPLING/"
-OUTDIR=${INDIR}"DEPTHS/"
+INDIR=${DATA}"DOWNSAMPLING/TAGGED_DOWNS/"
+OUTDIR=${DATA}"DOWNSAMPLING/DEPTHS/"
 
 #MAIN SCRIPT LOOPED FOR 3 CHIMPS
 
@@ -19,7 +19,7 @@ echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir ${OUTDIR}Pan_troglodytes_${chimp_name}
 mkdir ${OUTDIR}Pan_troglodytes_${chimp_name}/out/
 mkdir ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/
-ls ${INDIR}Pan_troglodytes_${chimp_name}/*_downs.bam | while read filepath;
+ls ${INDIR}Pan_troglodytes_${chimp_name}/*0.35_downs.bam | while read filepath;
 do in_file=$(ls $filepath | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
 input=$(echo $in_file)
 echo $input
