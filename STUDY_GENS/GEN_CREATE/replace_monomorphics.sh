@@ -16,7 +16,7 @@ mkdir -p ${OUTDIR}
 #INPUTS for chr and chimps
 chimp_names="verus-McVean"
 chromosomes="22"
-coverages="0.006"
+coverages="0.056 0.076 0.106 0.35"
 echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/
@@ -49,11 +49,11 @@ module load PYTHON/3.6.3
 python ${SRC}replace_monomorphics.py \
 ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/$input \
 ${PANEL}chr${chr}/GA.chr${chr}.144combined.vcf.gz \
-${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/filtered_${input}" > ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/filtered_study_panel_chr${chr}.sh
-jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/filtered_study_panel_chr${chr}.sh)
+${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/filtered_${input}" > ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/filtered_study_panel_chr${chr}_${cov}.sh
+jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/filtered_study_panel_chr${chr}_${cov}.sh)
 chmod 755 $jobname
 
 #SUBMISSION TO CLUSTER
-#/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/filtered_ref_panel_chr${chr}.out \
-#-e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/filtered_ref_panel_chr${chr}.err -n ${cov} -u 4 -t 1 -w 05:00:00
+/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/filtered_ref_panel_chr${chr}_${cov}.out \
+-e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/filtered_ref_panel_chr${chr}_${cov}.err -n ${cov} -u 4 -t 1 -w 05:00:00
 done; done; done;

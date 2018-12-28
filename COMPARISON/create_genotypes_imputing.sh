@@ -22,7 +22,7 @@ do mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}
 mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/out/
 mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/qu/
 mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/tmp/
-INPUT=${DATA}chr${chromosomes}/down_0.106
+INPUT=${DATA}chr${chromosomes}/down_0.036
 echo $INPUT
 name=$(echo $INPUT | rev |  cut -d/ -f1 | rev)
 sample_name="Pan_troglodytes_verus-McVean.variant130"
@@ -36,14 +36,14 @@ module load PYTHON/3.6.3
 
 #create sample_file
 python ${SRC}create_imputed_genotypes.py \
-${INPUT}/chr${chromosomes}.all.unphased.impute2.gz \
-${INPUT}/chr${chromosomes}.all.unphased.impute2_info \
-${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/genotypes_0.106 \
-0.3" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/genotype.sh
+${INPUT}/filtered_chr${chromosomes}.all.unphased.impute2.gz \
+${INPUT}/filtered_chr${chromosomes}.all.unphased.impute2_info \
+${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/INFO_plot/filtered_genotype_0.036 \
+0" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/genotype.sh
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/genotype.sh)
 chmod 777 $jobname
-#/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
-#-o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.out \
-#-e ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.err \
-#-n $name -u 1 -t 1 -w 02:00:00
+/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
+-o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.out \
+-e ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.err \
+-n $name -u 1 -t 1 -w 02:00:00
 done; done;

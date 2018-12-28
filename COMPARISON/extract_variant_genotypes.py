@@ -68,14 +68,14 @@ from our chimp only in SNPs which are not fixed
 """
 
 
-def print_selected_chimp_info(elements, vcf_index, out_f):
+def print_selected_chimp_info(elements, vcf_index, min_val, out_f):
     chr = elements[0]
     position = elements[1]
     ID = elements[2]
     REF = elements[3]
     ALT = elements[4]
     GT = elements[vcf_index].split(":")[0]
-    print("{}\t{}\t{}\t{}\t{}\t{}".format(chr, position, ID, REF, ALT, GT), file=out_f)
+    print("{}\t{}\t{}\t{}\t{}\t{}\t{}".format(chr, position, ID, REF, ALT, GT, min_val), file=out_f)
 
 
 #MAIN
@@ -92,9 +92,19 @@ with gzip.open(vcf_input_file, "rt") as f, \
         else:
             Pantro = take_genotypes_from_all_chimps(fields, Pantro)
             if all(value in fixed1 for key, value in Pantro.items()) or \
-               all(value in fixed2 for key, value in Pantro.items()):
-                print(len(Pantro), Pantro)
+               all(value in fixed2 for key, value in Pantro.items()) or \
+               any(value.split("/")[0] in range(2,9) for key, value in Pantro.items()):
                 continue
             else:
                 #print(len(Pantro), Pantro)
-                print_selected_chimp_info(fields, analized_vcf_index, out_fh)
+                count_0 = 0
+                count_1 = 0
+                for key, value in Pantro.items():
+                    alleles = value.split("/")
+                    for al in alleles:
+                        if al == "0":
+                            count_0 += 1
+                        elif al == "1":
+                            count_1 += 1
+                minim = min(count_0, count_1)
+                print_selected_chimp_info(fields, analized_vcf_index, minim, out_fh)

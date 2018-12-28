@@ -5,7 +5,7 @@ module load PYTHON/3.6.3
 
 #REFERENCE
 REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
-BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/IMPUTE/impute_v2.3.2_x86_64_static/"
+BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/IMPUTE2/impute_v2.3.2_x86_64_static/"
 
 #NEEDED FILES AND OUTPUT
 
@@ -23,21 +23,22 @@ mkdir -p ${OUTDIR}
 
 chimp_names="verus-McVean"
 chromosomes="22"
+coverages="0.036"
 
 #Iterates for chr and chimps
 echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
-ls ${STUDY_GENS}Pan_troglodytes_${chimp_name}/chr${chromosomes}/*0.35.gen.gz | while read filepath; 
-do in_file=$(ls $filepath | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
+echo $coverages | tr " " "\n" | while read cov;
+do in_file=$(ls ${STUDY_GENS}Pan_troglodytes_${chimp_name}/chr${chromosomes}/filtered_study_panel_chr22_${cov}.gen.gz | tr " " "\n" | rev | cut -d/ -f1 | rev | tr "\n" " ")
 input=$(echo $in_file)
-mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.35/ 
-mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.35/out
-mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.35/qu
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/ 
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/out
+mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/qu
 
 #LOOP CHUNKS IN FIRST CHROMOSOME
 
-num_lines=$(zcat $filepath | wc -l)
-last_pos=$(zcat $filepath | sed -n -e ${num_lines},${num_lines}p | cut -d " " -f 3)
+num_lines=$(zcat ${STUDY_GENS}Pan_troglodytes_${chimp_name}/chr${chromosomes}/filtered_study_panel_chr22_${cov}.gen.gz | wc -l)
+last_pos=$(zcat ${STUDY_GENS}Pan_troglodytes_${chimp_name}/chr${chromosomes}/filtered_study_panel_chr22_${cov}.gen.gz | sed -n -e ${num_lines},${num_lines}p | cut -d " " -f 3)
 num_chunks=$(echo $last_pos/1000000 | bc )
 echo $num_chunks
 num_chunks2=$(echo $num_chunks+1 | bc)
@@ -61,17 +62,17 @@ module load PLINK/1.90b
 ${BIN}impute2 \
 -m ${MAP_FILES}final_chr${chromosomes}.map \
 -g ${STUDY_GENS}Pan_troglodytes_${chimp_name}/chr${chromosomes}/$input \
--g_ref ${REF_PANELS}/chr${chromosomes}/ref_panel_chr${chromosomes}.gen.gz \
+-g_ref ${REF_PANELS}/chr${chromosomes}/ref_panel_chr${chromosomes}_prueba.gen.gz \
 -int $startchr $endchr \
 -Ne 20000 \
--o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.35/chr${chromosomes}.chunk${chunk}.unphased.impute2 \
--o_gz" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.35/qu/impute_chr${chromosomes}_chunk${chunk}.sh
-jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.35/qu/impute_chr${chromosomes}_chunk${chunk}.sh)
+-o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/filtered_chr${chromosomes}.chunk${chunk}.unphased.impute2 \
+-o_gz" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/qu/filtered_impute_chr${chromosomes}_chunk${chunk}.sh
+jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/qu/filtered_impute_chr${chromosomes}_chunk${chunk}.sh)
 chmod 755 $jobname
 start=$endchr
 
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
--o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.35/out/impute_chr${chromosomes}.out \
--e ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_0.35/out/impute_chr${chromosomes}.err \
--n ${chromosomes}_chunk${chunk} -u 8 -t 1 -w 40:00:00 -r lowprio
+-o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/out/filtered_impute_chr${chromosomes}.out \
+-e ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/out/filtered_impute_chr${chromosomes}.err \
+-n ${chromosomes}_chunk${chunk}_${cov} -u 8 -t 1 -w 23:59:00
 done; done; done;

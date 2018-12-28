@@ -8,14 +8,14 @@ REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
 BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/PANEL_REF/"
 
 #OUTPUT
-INDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/VCFs/"
+INDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/VCFs_DOWN/"
 OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/GEN_FILES/"
 mkdir -p ${OUTDIR}
 
 #INPUTS for chr and chimps
 chimp_names="verus-McVean"
 chromosomes="22"
-coverages="0.35"
+coverages="0.036"
 echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}
 mkdir -p ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/

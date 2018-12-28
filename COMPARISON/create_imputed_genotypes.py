@@ -54,4 +54,4 @@ with gzip.open(gen_input_file, "rt") as f1, \
             INFO = float(fields2[6])
             TYPE = int(fields2[8])
             if INFO >= float(threeshold):
-                print("{}\t{}\t{}\t{}\t{}".format(pos, allele0, allele1, GT, TYPE), file=f3)
+                print("{}\t{}\t{}\t{}\t{}\t{}".format(pos, allele0, allele1, GT, TYPE, INFO), file=f3)

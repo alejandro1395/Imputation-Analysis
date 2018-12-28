@@ -44,11 +44,12 @@ def take_info_from_genotyped_file(line1, dictionary, last_position):
     allele1 = fields[2]
     genotype = fields[3]
     TYPE = int(fields[4])
+    INFO = float(fields[5])
     if position != last_position:
         dictionary[position] = []
-        dictionary[position].append([allele0, allele1, genotype, TYPE])
+        dictionary[position].append([allele0, allele1, genotype, TYPE, INFO])
     else:
-        dictionary[position].append([allele0, allele1, genotype, TYPE])
+        dictionary[position].append([allele0, allele1, genotype, TYPE, INFO])
     last_position = position
     return dictionary, last_position
 
@@ -142,8 +143,7 @@ with gzip.open(ref_input_file, "rt") as f2, \
                             total_imputed, corrected_imputed, variant = sum_counter_genotype_found(total_imputed, corrected_imputed,
                                                                                                 gt_imp_ref, gt_ref, gt_imp_alt,
                                                                                                 gt_alt, variant)
-                            if gt_imp_ref != gt_ref or gt_imp_alt != gt_alt:
-                                print(pos, diction[pos], gt_ref, gt_alt, file=f3)
+                            #print(pos, element[4], diction[pos], gt_ref, gt_alt, file=f3)
                             break
 
 
