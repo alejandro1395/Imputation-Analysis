@@ -23,7 +23,7 @@ mkdir -p ${OUTDIR}
 
 chimp_names="verus-McVean"
 chromosomes="22"
-coverages="0.036"
+coverages="0.006 0.036 0.056 0.076 0.106 0.35"
 
 #Iterates for chr and chimps
 echo $chimp_names | tr " " "\n" | while read chimp_name;
@@ -74,5 +74,5 @@ start=$endchr
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
 -o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/out/filtered_impute_chr${chromosomes}.out \
 -e ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/out/filtered_impute_chr${chromosomes}.err \
--n ${chromosomes}_chunk${chunk}_${cov} -u 8 -t 1 -w 23:59:00
+-n ${chromosomes}_chunk${chunk}_${cov} -u 8 -t 1 -w 50:00:00 -r lowprio
 done; done; done;

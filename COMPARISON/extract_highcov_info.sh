@@ -38,12 +38,13 @@ module load PYTHON/3.6.3
 python ${SRC}extract_variant_genotypes.py \
 $INPUT \
 $sample_name \
+${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/samples_to_exclude \
 chr${chr} \
 ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/snp_ref_info.gz" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/variants_highcov_changed.sh 
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/variants_highcov_changed.sh)
 chmod 777 $jobname
-/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
--o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.out \
--e ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.err \
--n $name -u 1 -t 1 -w 06:00:00
+#/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
+#-o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.out \
+#-e ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.err \
+#-n $name -u 1 -t 1 -w 06:00:00
 done; done;
