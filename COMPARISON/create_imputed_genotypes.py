@@ -41,6 +41,7 @@ with gzip.open(gen_input_file, "rt") as f1, \
                 allele1 = "."
             probabilities = [float(fields1[5]), float(fields1[6]),
                              float(fields1[7])]
+            print(pos, probabilities)
             maximum_prob = max(probabilities)
             for i, j in enumerate(probabilities):
                 if j == maximum_prob:

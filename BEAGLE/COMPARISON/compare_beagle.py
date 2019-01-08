@@ -109,9 +109,8 @@ def sum_counter_genotype_found(total_count, correct_count, gt_refe, vcf_gen, gt_
     total_count += 1
     al1 = vcf_gen.split("|")[0]
     al2 = vcf_gen.split("|")[1]
-    if al1!="0" or al2!="0":
-        if (al1 == gt_refe and al2 == gt_alte) or (al2 == gt_refe and al1 == gt_alte):
-            correct_count += 1
+    if (al1 == gt_refe and al2 == gt_alte) or (al2 == gt_refe and al1 == gt_alte):
+        correct_count += 1
     variant = False
     return total_count, correct_count, variant
 
@@ -127,6 +126,7 @@ with gzip.open(vcf_out_file, "rt") as f1:
 
 with gzip.open(ref_input_file, "rt") as f2, \
      open(out_file, "w") as f3:
+        next(f2)
         for line in f2:
             pos, ref, alt_list, gt = take_info_from_reference_file(line)
             gt_ref = gt.split("/")[0]
@@ -143,12 +143,12 @@ with gzip.open(ref_input_file, "rt") as f2, \
                         if variant and (element[3] == "IMP"):
                             total_imputed, corrected_imputed, variant = sum_counter_genotype_found(total_imputed, corrected_imputed,
                                                                                                    gt_ref, element[2], gt_alt, variant)
-                            print(pos, element[4], diction[pos], gt_ref, gt_alt, file=f3)
+                            #print(pos, element[4], diction[pos], gt_ref, gt_alt, file=f3)
                             break
                         elif variant and (element[3] != "IMP"):
                             total_both_count, corrected_both_count, variant = sum_counter_genotype_found(total_both_count, corrected_both_count,
                                                                                                    gt_ref, element[2], gt_alt, variant)
-                            print(pos, element[4], diction[pos], gt_ref, gt_alt, file=f3)
+                            #print(pos, element[4], diction[pos], gt_ref, gt_alt, file=f3)
                             break
 
 

@@ -110,8 +110,10 @@ with open(calculated_genotypes, "r") as f1:
 
 with gzip.open(ref_input_file, "rt") as f2, \
      open(out_file, "w") as f3:
+        next(f2)
         for line in f2:
             pos, ref, alt_list, gt = take_info_from_reference_file(line)
+            print(pos, ref, alt_list, gt)
             gt_ref = gt.split("/")[0]
             gt_alt = gt.split("/")[1]
             if pos in diction.keys() and len(alt_list) == 1 \

@@ -62,7 +62,7 @@ module load PLINK/1.90b
 ${BIN}impute2 \
 -m ${MAP_FILES}final_chr${chromosomes}.map \
 -g ${STUDY_GENS}Pan_troglodytes_${chimp_name}/chr${chromosomes}/$input \
--g_ref ${REF_PANELS}/chr${chromosomes}/ref_panel_chr${chromosomes}_prueba.gen.gz \
+-g_ref ${REF_PANELS}/chr${chromosomes}/ref_panel_chr${chromosomes}.gen.gz \
 -int $startchr $endchr \
 -Ne 20000 \
 -o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chromosomes}/down_${cov}/filtered_chr${chromosomes}.chunk${chunk}.unphased.impute2 \
