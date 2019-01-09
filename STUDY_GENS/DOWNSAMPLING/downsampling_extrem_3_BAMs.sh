@@ -8,7 +8,7 @@ chimp_names="central-Nico verus-McVean schweinfurthii-A912_Nakuu"
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT
-DATA="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/"
+DATA="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/STUDY_GENS/"
 INDIR=${DATA}"BAM_RMDUP/"
 OUTDIR=${DATA}"DOWNSAMPLING/"
 

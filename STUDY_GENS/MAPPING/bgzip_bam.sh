@@ -9,7 +9,7 @@ chimp_names="central-Nico verus-McVean schweinfurthii-A912_Nakuu ellioti-Paquita
 
   
 #BAM INPUT
-DATA="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/"
+DATA="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/STUDY_GENS/"
 INDIR=${DATA}"BAM/"
 
 #FIRST WE NEED TO CHANGE THE NAME FOR Verus and Central to merged bam file
@@ -29,9 +29,3 @@ chmod 755 $jobname
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${INDIR}Pan_troglodytes_${chimp_name}/out/${chimp_name}.bgzip.out \
 -e ${INDIR}Pan_troglodytes_${chimp_name}/out/${chimp_name}.bgzip.err -n ${chimp_name} -u 1 -t 1 -w 03:00:00
 done
-
-
-
-
-
-

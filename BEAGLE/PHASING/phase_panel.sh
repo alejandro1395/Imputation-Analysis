@@ -5,8 +5,8 @@ module load PYTHON/3.6.3
 
 #REFERENCE
 REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
-BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/BEAGLE/"
-STUDY_GENS="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/GEN_FILES/"
+BIN="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/bin/BEAGLE/"
+STUDY_GENS="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/STUDY_GENS/GEN_FILES/"
 
 #chromosomes
 #chromosomes=$(echo {5..22})
@@ -15,7 +15,7 @@ chimp_name="verus-McVean"
 #We need to have the files from sorted bam with merged name
 
 #OUTPUT
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/BEAGLE/PANEL/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/BEAGLE/PANEL/"
 mkdir -p ${OUTDIR}
 mkdir -p ${OUTDIR}qu/
 mkdir -p ${OUTDIR}out/

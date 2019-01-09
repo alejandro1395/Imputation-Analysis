@@ -8,11 +8,11 @@ chromosomes="22"
 
 #REFERENCE
 REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
-BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/PANEL_REF/"
+BIN="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/bin/PANEL_REF/"
 
 #OUTDIR FOR ANALYZING HIGH COVERAGE INDIVIDUAL VCFs
 
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/results/Comparison/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/Comparison/"
 
 #INPUTS for chr
 DATA="/home/devel/marcmont/scratch/GA/GATK/JOINT/"

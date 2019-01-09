@@ -5,13 +5,13 @@ module load PYTHON/3.6.3
 
 #REFERENCE
 REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
-BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/PANEL_REF/"
-SRC="/scratch/devel/avalenzu/Impute_Master_Project/src/BEAGLE/IMPUTING/"
+BIN="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/bin/PANEL_REF/"
+SRC="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/src/BEAGLE/IMPUTING/"
 PANEL="/home/devel/marcmont/scratch/GA/GATK/JOINT/"
 
 #OUTPUT
-INDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/VCFs_DOWN/"
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/results/BEAGLE/IMPUTE_OUT/"
+INDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/STUDY_GENS/VCFs_DOWN/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/BEAGLE/IMPUTE_OUT/"
 mkdir -p ${OUTDIR}
 
 #INPUTS for chr and chimps

@@ -5,17 +5,17 @@ module load PYTHON/3.6.3
 
 #REFERENCE
 REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
-BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/IMPUTE2/impute_v2.3.2_x86_64_static/"
+BIN="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/bin/IMPUTE2/impute_v2.3.2_x86_64_static/"
 
 #NEEDED FILES AND OUTPUT
 
-STUDY_GENS="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/GEN_FILES/"
+STUDY_GENS="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/STUDY_GENS/GEN_FILES/"
 
-MAP_FILES="/scratch/devel/avalenzu/Impute_Master_Project/data/MAP_RECOMB/BIG_MAP_HG18/final_maps_with_cM/"
+MAP_FILES="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/MAP_RECOMB/BIG_MAP_HG18/final_maps_with_cM/"
 
-REF_PANELS="/scratch/devel/avalenzu/Impute_Master_Project/data/PANEL_REF/"
+REF_PANELS="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/PANEL_REF/"
 
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/results/Impute_out/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/Impute_out/"
 
 mkdir -p ${OUTDIR}
 

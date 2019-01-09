@@ -4,7 +4,7 @@
 coverages="0.006 0.036 0.056 0.076 0.106 0.35"
 
 echo $coverages | tr " " "\n" | while read cov;
-do INDIR=/scratch/devel/avalenzu/Impute_Master_Project/results/Impute_out/Pan_troglodytes_verus-McVean/chr22/down_${cov}/
+do INDIR=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/Impute_out/Pan_troglodytes_verus-McVean/chr22/down_${cov}/
 
 for i in {1..53}; 
 do cat ${INDIR}filtered_chr22.chunk$i.unphased.impute2.gz >> ${INDIR}filtered_chr22.all.unphased.impute2.gz

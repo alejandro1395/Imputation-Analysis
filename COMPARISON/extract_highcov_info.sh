@@ -8,11 +8,11 @@ chromosomes="22"
 
 #OUTDIR FOR ANALYZING HIGH COVERAGE INDIVIDUAL VCFs
 
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/results/Comparison/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/Comparison/"
 
 #INPUTS for chr
 DATA="/home/devel/marcmont/scratch/GA/GATK/JOINT/"
-SRC="/scratch/devel/avalenzu/Impute_Master_Project/src/COMPARISON/"
+SRC="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/src/COMPARISON/"
 
 echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}

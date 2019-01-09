@@ -15,7 +15,7 @@ three_chimp_names="verus-McVean schweinfurthii-A912_Nakuu ellioti-Paquita"
 
   
 #BAM OUTPUT
-DATA="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/"
+DATA="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/STUDY_GENS/"
 OUTDIR=${DATA}"BAM/"
 
 

@@ -8,7 +8,7 @@ chimp_names="ellioti-Paquita verus-McVean schweinfurthii-A912_Nakuu"
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT
-DATA="/scratch/devel/avalenzu/Impute_Master_Project/data/STUDY_GENS/"
+DATA="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/STUDY_GENS/"
 INDIR=${DATA}"DOWNSAMPLING/TAGGED_DOWNS/"
 OUTDIR=${DATA}"DOWNSAMPLING/DEPTHS/"
 
@@ -32,6 +32,3 @@ jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/qu/${input}.sh)
 chmod 755 $jobname
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${input}.out -e ${OUTDIR}Pan_troglodytes_${chimp_name}/out/${input}.err -n ${input} -u 1 -t 1 -w 15:00:00
 done; done;
-
-
-

@@ -4,9 +4,9 @@ module load gcc/4.9.3
 module load PYTHON/3.6.3
 
 #SET DIRECTORIES
-INDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/MAP_RECOMB/BIG_MAP_HG18/joined_chimp_maps/"
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/MAP_RECOMB/BIG_MAP_HG18/final_maps/"
-SRC="/scratch/devel/avalenzu/Impute_Master_Project/src/MAP_RECOMB/new_maps_big/"
+INDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/MAP_RECOMB/BIG_MAP_HG18/joined_chimp_maps/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/MAP_RECOMB/BIG_MAP_HG18/final_maps/"
+SRC="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/src/MAP_RECOMB/new_maps_big/"
 
 #SET OUTPUT
 out=${OUTDIR}"out/"

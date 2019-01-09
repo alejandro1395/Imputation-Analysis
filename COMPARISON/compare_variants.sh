@@ -9,12 +9,12 @@ coverages="0.006 0.036 0.056 0.076 0.106 0.35"
 
 #OUTDIR FOR ANALYZING HIGH COVERAGE INDIVIDUAL VCFs
 
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/results/Comparison/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/Comparison/"
 
 #INPUTS for chr
 echo $coverages | tr " " "\n" | while read cov; 
-do DATA="/scratch/devel/avalenzu/Impute_Master_Project/results/Impute_out/Pan_troglodytes_verus-McVean/chr22/down_${cov}/"
-SRC="/scratch/devel/avalenzu/Impute_Master_Project/src/COMPARISON/"
+do DATA="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/Impute_out/Pan_troglodytes_verus-McVean/chr22/down_${cov}/"
+SRC="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/src/COMPARISON/"
 
 echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}
@@ -24,7 +24,7 @@ do mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}
 mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/out/
 mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/qu/
 mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/tmp/
-INPUT=/scratch/devel/avalenzu/Impute_Master_Project/results/Comparison/Pan_troglodytes_verus-McVean/chr22/
+INPUT=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/Comparison/Pan_troglodytes_verus-McVean/chr22/
 echo $INPUT
 name=downs_${cov}
 sample_name="Pan_troglodytes_verus-McVean.variant130"

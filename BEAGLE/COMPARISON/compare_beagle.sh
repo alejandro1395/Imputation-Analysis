@@ -9,7 +9,7 @@ coverages="0.006 0.036 0.056 0.076 0.106 0.35"
 
 #OUTDIR FOR ANALYZING HIGH COVERAGE INDIVIDUAL VCFs
 
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/results/Comparison/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/BEAGLE/"
 
 #INPUTS for chr
 echo $coverages | tr " " "\n" | while read cov; 

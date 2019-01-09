@@ -4,12 +4,12 @@ module load gcc/4.9.3
 module load PYTHON/3.6.3
 
 #SET DIRECTORIES
-INDIR1="/scratch/devel/avalenzu/Impute_Master_Project/data/MAP_RECOMB/MAP_GH18/lifted_coord/"
-INDIR2="/scratch/devel/avalenzu/Impute_Master_Project/data/MAP_RECOMB/MAP_GH18/chimps_map_conv/"
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/data/MAP_RECOMB/MAP_GH18/final_chr_maps/"
-SRC="/scratch/devel/avalenzu/Impute_Master_Project/src/MAP_RECOMB/new_maps/"
-BIN="/scratch/devel/avalenzu/Impute_Master_Project/bin/MAP_RECOMB/"
-DATA="/scratch/devel/avalenzu/Impute_Master_Project/data/MAP_RECOMB/"
+INDIR1="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/MAP_RECOMB/MAP_GH18/lifted_coord/"
+INDIR2="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/MAP_RECOMB/MAP_GH18/chimps_map_conv/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/MAP_RECOMB/MAP_GH18/final_chr_maps/"
+SRC="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/src/MAP_RECOMB/new_maps/"
+BIN="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/bin/MAP_RECOMB/"
+DATA="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/MAP_RECOMB/"
 
 #SET OUTPUT
 out=${OUTDIR}"out/"

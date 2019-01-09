@@ -10,11 +10,11 @@ coverages="0.006 0.036 0.056 0.076 0.106 0.35"
 
 #OUTDIR FOR ANALYZING HIGH COVERAGE INDIVIDUAL VCFs
 
-OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/results/Comparison/"
+OUTDIR="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/Comparison/"
 
 #INPUTS for chr
-DATA="/scratch/devel/avalenzu/Impute_Master_Project/results/Impute_out/Pan_troglodytes_verus-McVean/"
-SRC="/scratch/devel/avalenzu/Impute_Master_Project/src/COMPARISON/"
+DATA="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/results/Impute_out/Pan_troglodytes_verus-McVean/"
+SRC="/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/src/COMPARISON/"
 
 echo $chimp_names | tr " " "\n" | while read chimp_name;
 do mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}
