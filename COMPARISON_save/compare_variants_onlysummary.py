@@ -64,10 +64,7 @@ def take_info_from_reference_file(line2):
     refe = fields[3]
     alte_list = fields[4].split(",")
     gt_refe = fields[5]
-    min_count = fields[6]
-    missingness = fields[7]
-    maf = fields[8]
-    return posi, refe, alte_list, gt_refe, min_count, missingness, maf
+    return posi, refe, alte_list, gt_refe
 
 """
 Functions that translate impute2 genotypes to vcf 0/1 format for biallelic SNPs found
@@ -115,7 +112,8 @@ with gzip.open(ref_input_file, "rt") as f2, \
      open(out_file, "w") as f3:
         next(f2)
         for line in f2:
-            pos, ref, alt_list, gt, min_c, miss, maf_v = take_info_from_reference_file(line)
+            pos, ref, alt_list, gt = take_info_from_reference_file(line)
+            print(pos, ref, alt_list, gt)
             gt_ref = gt.split("/")[0]
             gt_alt = gt.split("/")[1]
             if pos in diction.keys() and len(alt_list) == 1 \
@@ -147,17 +145,17 @@ with gzip.open(ref_input_file, "rt") as f2, \
                             total_imputed, corrected_imputed, variant = sum_counter_genotype_found(total_imputed, corrected_imputed,
                                                                                                 gt_imp_ref, gt_ref, gt_imp_alt,
                                                                                                 gt_alt, variant)
-                            print(pos, element[4], gt_imp_ref, gt_imp_alt,  gt_ref, gt_alt, min_c, miss, maf_v, file=f3)
+                            #print(pos, element[4], diction[pos], gt_ref, gt_alt, file=f3)
                             break
 
 
-        #print("#####PERCENTAGES OF IMPUTATION SCORES######", file = f3)
-        #print()
-        #print("{}: {}".format("Total number of type 3 positions in ref VCF", total_three), file=f3)
-        #print("{}: {}".format("Total number of type 3 positions in ref VCF right", corrected_three), file=f3)
-        #print("{}: {}".format("Total number of BOTH panel-down in ref VCF", total_both_count), file=f3)
-        #print("{}: {}".format("Percentage of right BOTH panel-down in ref VCF genotypes", round(100*(corrected_both_count/total_both_count), 2)), file=f3)
-        #print("{}: {}".format("Total number of BOTH panel-down in ref VCF", total_both_count + total_three), file=f3)
-        #print("{}: {}".format("Percentage of right BOTH panel-down in ref VCF genotypes", round(100*((corrected_three+corrected_both_count)/(total_both_count + total_three)), 2)), file=f3)
-        #print("{}: {}".format("Total number of imputed filtered genotypes", total_imputed), file=f3)
-        #print("{}: {}".format("Percentage of right imputed filtered genotypes", round(100*(corrected_imputed/total_imputed), 2)), file = f3)
+        print("#####PERCENTAGES OF IMPUTATION SCORES######", file = f3)
+        print()
+        print("{}: {}".format("Total number of type 3 positions in ref VCF", total_three), file=f3)
+        print("{}: {}".format("Total number of type 3 positions in ref VCF right", corrected_three), file=f3)
+        print("{}: {}".format("Total number of BOTH panel-down in ref VCF", total_both_count), file=f3)
+        print("{}: {}".format("Percentage of right BOTH panel-down in ref VCF genotypes", round(100*(corrected_both_count/total_both_count), 2)), file=f3)
+        print("{}: {}".format("Total number of BOTH panel-down in ref VCF", total_both_count + total_three), file=f3)
+        print("{}: {}".format("Percentage of right BOTH panel-down in ref VCF genotypes", round(100*((corrected_three+corrected_both_count)/(total_both_count + total_three)), 2)), file=f3)
+        print("{}: {}".format("Total number of imputed filtered genotypes", total_imputed), file=f3)
+        print("{}: {}".format("Percentage of right imputed filtered genotypes", round(100*(corrected_imputed/total_imputed), 2)), file = f3)

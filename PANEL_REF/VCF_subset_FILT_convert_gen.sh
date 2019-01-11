@@ -44,9 +44,9 @@ module load PLINK/1.90b
 
 #MAIN SCRIPT
 
-${BIN}plink --vcf ${INPUT} --keep ${OUTDIR}samples_file --double-id --recode oxford gen-gz --out ${OUTDIR}chr${chr}/ref_panel_chr${chr}" > ${OUTDIR}qu/ref_panel_chr${chr}.sh
-jobname=$(echo ${OUTDIR}qu/ref_panel_chr${chr}.sh)
+${BIN}plink --vcf ${INPUT} --maf 0.05 --geno 0.1 --keep ${OUTDIR}samples_file --double-id --recode oxford gen-gz --out ${OUTDIR}chr${chr}/filtered_ref_panel_chr${chr}" > ${OUTDIR}qu/filtered_ref_panel_chr${chr}.sh
+jobname=$(echo ${OUTDIR}qu/filtered_ref_panel_chr${chr}.sh)
 chmod 777 $jobname
 
-/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}out/ref_panel_chr${chr}.out -e ${OUTDIR}out/ref_panel_chr${chr}.err -n ${name} -u 4 -t 1 -w 05:00:00
+/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}out/filtered_ref_panel_chr${chr}.out -e ${OUTDIR}out/filtered_ref_panel_chr${chr}.err -n ${name} -u 4 -t 1 -w 05:00:00
 done;

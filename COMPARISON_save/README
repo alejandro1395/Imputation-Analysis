@@ -1,0 +1,41 @@
+DIFFERENT ANALYSIS CARRIED OUT AFTER PROCEEDING WITH THE IMPUTATION IN CHROMOSOME 22:
+
+1- First all positions were analyzed and they were compared SNP type 2 with the reference, SNP type 3 and SNP type 1 (imputed)
+   with the reference vcf from the individual (taken out from the panel previously in snp-ref format)
+   PROBLEMS:
+      - triallelic positions and more giving problems with SNP types
+      - unordered alleles in the gen file
+      - TOO MUCH positions from the beginning (not all of them informative) in the comparison
+ 
+ 2- Taken only biallelic positions with information of genotype and comparing the type 1, 2 and 3 with the reference as before:
+    - Imputed SNPs increase instead of decreasing with coverage
+    -Low number of 3 SNPs now because removed 0/0 pos -> all one missing allele are removed when doing this analysis
+    - SNPs with genotype 0/0 that should be considered in the comparison for polimorphic SNPs are skipped in the analysis (even if
+    they are monomorphic in our study data they are important to know if the software predicts well)
+    - percentage too high of well genotyped from the beginning SNPs (May be fixed positions)
+    - Not yet high coverage downsampled to use it as reference that evrything is going OK in the analysis.
+    - Look if there is some BIAS in the wrong imputed positions from the total impouted positions
+    - The amount of beforehand known positions does not saturate because we are missing all the 0/0 genotypes when doing the analysis
+    this way
+ 
+ 
+ 3- Taking only biallelic POLIMORPHIC POSITIONS to compare reference vcf with downsampled vcf and watch the progress that the IMPUTATION is
+    carrying out on the data:
+    PROBLEMS:
+    -TYPE2 positions with fixed allele also in panel have not a problem (WELL type2 settled)
+    - Type SNP3 (not integrated in the imputations) positions which are considered different snps from the vcf reference when they are not just because
+    they are monomorphic in the study data and polimorphoic in the panel of chimps.
+    - All type3 are genotyped as 0/0 (not all will be like that) and all type 2 have 2 alleles and are genotyped as 0/1 or 1/1 in the downsampled study
+    data --> this will be changed by following advise of oxford mail from one rersearcher, doing a previous filtering step on the gen input
+    data of IMPUTE2 missing those type3 positions could lead always in worse results in the Imputation process.
+    - Now decreases the Impoutation positions but is still being really bad the percentage of right genotyped imputed positions
+    It saturates quickly 
+    - Look if there is some BIAS in the wrong imputed positions from the total impouted positions
+
+COMPARANDO LOS RESULTADOS DEL STEP 2 CON EL 3 PARA LOS IMPUTED SNPS-> Creo que a partir de menos de mas de 1x a mas que crezca o decrezca
+el total de Imputed SNPs depende de que gana en la bascula entre los SNPs que aumentas porque pasan el filtro de calidad mas SNPs al tener
+mas coverage y poder basarte en mas INFO vs lo que decrecen por tener menos posiciones que imputar (1 VS 1)
+--> COMO EN el 2ndo caso no tienes en cuenta los SNPS 0/0 que vas incorporando a tus datos con el coverage, no se muestra tanto el efecto
+de decrecer por tener mas posiciones cubiertas y por lo tanto se VE mas el efecto de que mas SNPs pasan el filtro de calidad (tendencia
+de aumento en las total IMPUTED)
+

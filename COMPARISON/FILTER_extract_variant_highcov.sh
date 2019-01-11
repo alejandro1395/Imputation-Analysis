@@ -22,8 +22,9 @@ do mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}
 mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/out/
 mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/qu/
 mkdir -p ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/tmp/
-INPUT=/home/devel/marcmont/scratch/GA/GATK/JOINT/chr22/GA.chr22.144combined.vcf.gz
-name=$(echo $INPUT | rev |  cut -d/ -f1 | rev)
+INPUT2=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_sep2018-dec2018_panel58/data/PANEL_REF/chr22/filtered_vcf_chr22.vcf.gz
+INPUT1=/home/devel/marcmont/scratch/GA/GATK/JOINT/chr22/GA.chr22.144combined.vcf.gz
+name=$(echo $INPUT2 | rev |  cut -d/ -f1 | rev)
 sample_name="Pan_troglodytes_verus-McVean.variant130"
 
 echo "#!/bin/bash
@@ -34,12 +35,13 @@ module load PYTHON/3.6.3
 #MAIN SCRIPT
 
 #create sample_file
-python ${SRC}extract_variant_genotypes.py \
-$INPUT \
+python ${SRC}FILTER_extract_variant_highcov.py \
+$INPUT1 \
+$INPUT2 \
 $sample_name \
 ${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/samples_to_exclude \
 chr${chr} \
-${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/snp_ref_info.gz" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/variants_highcov_changed.sh 
+${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/FILTER_snp_ref_info.gz" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/variants_highcov_changed.sh 
 jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/variants_highcov_changed.sh)
 chmod 777 $jobname
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
