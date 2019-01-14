@@ -39,11 +39,11 @@ module load PYTHON/3.6.3
 
 #create sample_file
 python ${SRC}create_imputed_genotypes.py \
-${INPUT}/filtered_chr${chromosomes}.all.unphased.impute2.gz \
-${INPUT}/filtered_chr${chromosomes}.all.unphased.impute2_info \
-${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/genotypes/filtered_genotype_${cov} \
-0.3" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/filtered_genotype_${cov}.sh
-jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/filtered_genotype_${cov}.sh)
+${INPUT}/filtered_filtered_panel_chr${chromosomes}.all.unphased.impute2.gz \
+${INPUT}/filtered_filtered_panel_chr${chromosomes}.all.unphased.impute2_info \
+${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/genotypes/filtered_filtered_panel_genotype_${cov} \
+-1" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/filtered_filtered_panel_genotype_${cov}.sh
+jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/filtered_filtered_panel_genotype_${cov}.sh)
 chmod 777 $jobname
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
 -o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.out \

@@ -37,11 +37,11 @@ module load PYTHON/3.6.3
 #MAIN SCRIPT
 
 #create sample_file
-python ${SRC}compare_variants_onlysummary.py \
-${INPUT}snp_ref_info.gz \
-${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/genotypes/filtered_genotype_${cov} \
-${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/comparison_files/filtered_comparison_${cov}.txt" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/filtered_compare_${cov}.sh
-jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/filtered_compare_${cov}.sh)
+python ${SRC}compare_variants.py \
+${INPUT}FILTER_snp_ref_info.gz \
+${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/genotypes/filtered_filtered_panel_genotype_${cov} \
+${OUTDIR}/Pan_troglodytes_${chimp_name}/chr${chr}/comparison_files/filtered_filtered_panel_comparison_${cov}.txt" > ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/filtered_filtered_panel_compare_${cov}.sh
+jobname=$(echo ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/qu/filtered_filtered_panel_compare_${cov}.sh)
 chmod 777 $jobname
 /scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} \
 -o ${OUTDIR}Pan_troglodytes_${chimp_name}/chr${chr}/out/${name}.out \
