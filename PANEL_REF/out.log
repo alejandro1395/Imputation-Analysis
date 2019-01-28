@@ -1,0 +1,22 @@
+
+VCFtools - v0.1.12
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/devel/marcmont/scratch/GA/GATK/JOINT/chr21/GA.chr21.144combined.vcf.gz
+	--keep chimp_samples
+	--mac 2
+	--max-alleles 2
+	--min-alleles 2
+	--max-missing 0.99
+	--recode
+	--remove-indels
+	--stdout
+
+Using zlib version: 1.2.3
+Versions of zlib >= 1.2.4 will be *much* faster when reading zipped VCF files.
+Keeping individuals in 'keep' list
+After filtering, kept 61 out of 142 Individuals
+Outputting VCF file...
+After filtering, kept 1597077 out of a possible 35201301 Sites
+Run Time = 1658.00 seconds
