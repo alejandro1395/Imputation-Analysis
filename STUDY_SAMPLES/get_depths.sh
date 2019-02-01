@@ -4,7 +4,7 @@ module load gcc/4.9.3
 module load PYTHON/3.6.3
   
 #BAM OUTPUT
-DATA=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/data/SAMPLES_LOW/
+DATA=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.1_analysis_chimp/SAMPLES_LOW/
 OUTDIR=${DATA}depths_western/
 
 #MAIN SCRIPT LOOPED FOR 3 CHIMPS

@@ -14,7 +14,7 @@ module load java
 module load TABIX/0.2.6
 module load BCFTOOLS
 
-PANEL=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/data/PANEL/
+PANEL=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.1_analysis_chimp/PANEL/
 
 #MAIN SCRIPT
 

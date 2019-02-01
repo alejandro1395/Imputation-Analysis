@@ -11,7 +11,7 @@ REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT
-DATA=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/data/
+DATA=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.1_analysis_chimp/
 INDIR=/scratch/devel/cfontser/PanAf/CHR21/Final_Bam_August/BAM_addRG/
 OUTDIR=${DATA}SAMPLES_LOW/
 

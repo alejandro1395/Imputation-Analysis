@@ -5,14 +5,14 @@ module load PYTHON/3.6.3
 
 #REFERENCE
 REF="/home/devel/marcmont/scratch/snpCalling_hg19/chimp/assembly/BWA/hg19.fa"
-PANEL=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/data/PANEL/
+PANEL=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.1_analysis_chimp/PANEL/
 
 #chimp folders
 
 #We need to have the files from sorted bam with merged name
   
 #BAM OUTPUT
-DATA=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/data/
+DATA=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.1_analysis_chimp/
 INDIR=/scratch/devel/cfontser/PanAf/CHR21/Final_Bam_August/BAM_addRG/
 OUTDIR=${DATA}SAMPLES_LOW/
 
