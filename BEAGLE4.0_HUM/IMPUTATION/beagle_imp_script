@@ -1,0 +1,48 @@
+#!/bin/bash
+
+module load purge
+module load PYTHON/3.6.3
+
+DATA=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.0_analysis_human/SAMPLES_vcf/SPLITTED_MARKERS_VCFs/
+MAP=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.0_analysis_human/MAP/
+BIN=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/bin/
+REF=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.0_analysis_human/REF/SPLITTED_MARKERS_VCFs/
+OUTDIR=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.0_analysis_human/IMPUTATION/
+
+mkdir -p ${OUTDIR}/qu
+mkdir -p ${OUTDIR}/out
+count=0
+for filepath in $(ls ${DATA}Hum_*.vcf.gz);
+do count=$(($count+1))
+echo $count
+
+echo "#!/bin/bash
+module purge
+module load gcc/4.9.3-gold
+module load xz/5.2.2
+module load SAMTOOLS/1.3
+module load java
+module load GATK/4.0.8.1
+module load TABIX/0.2.6
+module load VCFTOOLS/0.1.7
+
+java -Xmx70g -Djava.io.tmpdir=${OUTDIR}tmp/ \
+-XX:-UseGCOverheadLimit \
+-jar ${BIN}beagle.r1399.jar \
+gl=${DATA}Hum_chr20_merged_nonmissRow_splitted.${count}.vcf.gz \
+ref=${REF}filtered_1000G_panel_splitted.${count}.vcf.gz \
+nthreads=8 \
+out=${OUTDIR}VCF_Boe1_merged_nonmiss_${count} \
+map=${MAP}plink.chr20.GRCh37.map \
+impute=true \
+gprobs=true" > ${OUTDIR}qu/Hum_chr20_merged_gl_imp_${count}.sh
+jobname=$(echo ${OUTDIR}qu/Hum_chr20_merged_gl_imp_${count}.sh)
+chmod 755 $jobname
+
+#SUBMISSION TO CLUSTER
+/scratch/devel/avalenzu/CNAG_interface/submit.py -c ${jobname} -o ${OUTDIR}out/Hum_chr20_merged_gl_imp_${count}.out \
+-e ${OUTDIR}out/Hum_chr20_merged_gl_imp_${count}.sh -n gl_imp_${count} -u 8 -t 1 -w 20:00:00
+
+
+#gl=../../SAMPLES_LOW/VCF_Boe1_merged/VCF_Boe1_merged_nonmiss.vcf.gz
+done
