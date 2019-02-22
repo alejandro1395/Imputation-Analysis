@@ -3,7 +3,7 @@
 module load purge
 module load PYTHON/3.6.3
 
-DATA=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.0_analysis_chimp/SAMPLES_vcf/SPLITTED_VCFs/
+DATA=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.0_analysis_chimp/SAMPLES_vcf/
 MAP=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.1_analysis_chimp/MAP/
 BIN=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/bin/
 REF=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/BEAGLE_4.0_analysis_chimp/PANEL/SPLITTED_VCF/
@@ -12,7 +12,7 @@ OUTDIR=/scratch/devel/avalenzu/Impute_Master_Project/ANALYSIS_jan2019_panel300/B
 mkdir -p ${OUTDIR}/qu
 mkdir -p ${OUTDIR}/out
 count=0
-for filepath in $(ls ${DATA}VCF_Boe1_*.vcf.gz);
+for filepath in $(ls ${REF}filtered*.vcf.gz);
 do count=$(($count+1))
 echo $count
 
@@ -29,7 +29,7 @@ module load VCFTOOLS/0.1.7
 java -Xmx70g -Djava.io.tmpdir=${OUTDIR}tmp/ \
 -XX:-UseGCOverheadLimit \
 -jar ${BIN}beagle.r1399.jar \
-gl=${DATA}VCF_Boe1_merged_nonmiss_splitted.${count}.vcf.gz \
+gl=${DATA}VCF_Boe1_merged_nonmiss.vcf.recode.vcf \
 ref=${REF}filtered_chimp_chr21_Panel_splitted.${count}.vcf.gz \
 nthreads=8 \
 out=${OUTDIR}VCF_Boe1_merged_nonmiss_${count} \
